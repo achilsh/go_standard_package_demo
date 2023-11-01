@@ -10,4 +10,7 @@ func main() {
 	bufio_demo.Bufio_demo_run()
 	builtin_demo.BuiltinDemoRun()
 	bytes_demo.BytesDemoRun()
+
+	//
+	bytes_demo.BytesBufferDemo()
 }
