@@ -4,6 +4,7 @@ import (
 	"std_pkg_demo/bufio_demo"
 	"std_pkg_demo/builtin_demo"
 	"std_pkg_demo/bytes_demo"
+	"std_pkg_demo/encode_demo"
 )
 
 func main() {
@@ -15,4 +16,7 @@ func main() {
 	bytes_demo.BytesBufferDemo()
 	//
 	bytes_demo.BytesReaderRun()
+	//
+	encode_demo.RunEncodeDemo()
+	encode_demo.RunBinaryDemo()
 }
