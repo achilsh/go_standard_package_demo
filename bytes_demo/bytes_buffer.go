@@ -5,14 +5,14 @@ import (
 	"fmt"
 )
 
-//下面操作是针对： 可变大小，可读写的字节 buf。
-//下面操作是针对： 可变大小，可读写的字节 buf。
-//下面操作是针对： 可变大小，可读写的字节 buf。
-//下面操作是针对： 可变大小，可读写的字节 buf。
-//下面操作是针对： 可变大小，可读写的字节 buf。
-//下面操作是针对： 可变大小，可读写的字节 buf。
-//下面操作是针对： 可变大小，可读写的字节 buf。
-//下面操作是针对： 可变大小，可读写的字节 buf。
+//下面操作是针对： 可变大小，带有读写方法的 字节buf。
+//下面操作是针对： 可变大小，带有读写方法的 字节buf。
+//下面操作是针对： 可变大小，带有读写方法的 字节buf。
+//下面操作是针对： 可变大小，带有读写方法的 字节buf。
+//下面操作是针对： 可变大小，带有读写方法的 字节buf。
+//下面操作是针对： 可变大小，带有读写方法的 字节buf。
+//下面操作是针对： 可变大小，带有读写方法的 字节buf。
+//下面操作是针对： 可变大小，带有读写方法的 字节buf。
 type BytesBuffer struct {
 	bf *bytes.Buffer // is a variable-sized buffer of bytes with Read and Write methods
 	//可变大小，可读写 的字节buf, 。
@@ -68,6 +68,17 @@ func BytesBufferDemo() {
 	//
 	b7 :=  NewBytesBuffer(newStrBuffer("aaccbberfdfadfadfadf123123"))
 	b7.str()
+	//
+	b8 := NewBytesBuffer(newBytesBuffer())
+	b8.write() 
+	b8.bytes()
+	b8.length()
+	//
+	b9 := NewBytesBuffer(newStrBuffer("this is demo write to...."))
+	b9.bytes()
+	b9.writeto()
+	b9.bytes()
+	b9.length()
 }
 
 // //

@@ -1,6 +1,7 @@
 package bytes_demo
 
 import (
+	"bytes"
 	"fmt"
 	"io"
 )
@@ -146,4 +147,52 @@ func( p *BytesBuffer) str() {
 	p.bf.UnreadByte() //将已读的位置向前-1，那么最后一个已读的字节变为了未读。
 
 	fmt.Println("unread buf data: ", s) //未读的数据，以string 返回
+}
+
+
+//
+func (p *BytesBuffer) write() {
+	fmt.Println("bytes.Buffer.Write op.")
+	if p == nil || p.bf == nil {
+		return
+	}
+	toWriteData := []byte("this is demo write")
+	
+	n, e := p.bf.Write(toWriteData) //将外面的数据写到 bytes.Buffer中。这样未读的空间增加。已读保持不变。
+	if e != nil {
+		fmt.Println("write data to buffer fail, e: ", e)
+		return 
+	}
+	fmt.Println("to write data ret len: ", n)
+}
+
+type IoWriter struct {
+	dst []byte
+}
+func (iow *IoWriter)Write(src []byte) (n int, err error) {
+	//将src 写到iow中的dst中。
+	if src == nil || len(src) <= 0 {
+		return 0, nil 
+	}
+	iow.dst = bytes.Clone(src)
+	return len(iow.dst), nil 
+	//
+}
+func (iow* IoWriter) show() {
+	fmt.Println("iowriter's content: ", string(iow.dst))
+}
+func Newiowwriter () *IoWriter {
+	return &IoWriter{}
+}
+
+
+func (p *BytesBuffer) writeto() {
+	fmt.Println("bytes.Buffer.WriteTo op.")
+	if p == nil ||  p.bf == nil {
+		return 
+	}
+	//
+	dst := Newiowwriter()
+	p.bf.WriteTo(dst) //将bytes.Buffer中的所有未读数据写到外界Io上。这样原来的bytes.Buffer中的已读增加，未读数减少。writeto
+	dst.show()
 }

@@ -13,4 +13,6 @@ func main() {
 
 	//
 	bytes_demo.BytesBufferDemo()
+	//
+	bytes_demo.BytesReaderRun()
 }
