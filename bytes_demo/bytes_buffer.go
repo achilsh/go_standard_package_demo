@@ -5,14 +5,14 @@ import (
 	"fmt"
 )
 
-//下面操作是针对： 可变大小，带有读写方法的 字节buf。
-//下面操作是针对： 可变大小，带有读写方法的 字节buf。
-//下面操作是针对： 可变大小，带有读写方法的 字节buf。
-//下面操作是针对： 可变大小，带有读写方法的 字节buf。
-//下面操作是针对： 可变大小，带有读写方法的 字节buf。
-//下面操作是针对： 可变大小，带有读写方法的 字节buf。
-//下面操作是针对： 可变大小，带有读写方法的 字节buf。
-//下面操作是针对： 可变大小，带有读写方法的 字节buf。
+//下面操作是对 bytes.Buffer： 可变大小，带有读写方法的 字节buf。字节buf对象 可以默认创建，可以通过其他 字节分片创建， 可以通过 字符串来创建。
+//下面操作是对 bytes.Buffer： 可变大小，带有读写方法的 字节buf。字节buf对象 可以默认创建，可以通过其他 字节分片创建， 可以通过 字符串来创建。
+//下面操作是对 bytes.Buffer： 可变大小，带有读写方法的 字节buf。字节buf对象 可以默认创建，可以通过其他 字节分片创建， 可以通过 字符串来创建。
+//下面操作是对 bytes.Buffer： 可变大小，带有读写方法的 字节buf。字节buf对象 可以默认创建，可以通过其他 字节分片创建， 可以通过 字符串来创建。
+//下面操作是对 bytes.Buffer： 可变大小，带有读写方法的 字节buf。字节buf对象 可以默认创建，可以通过其他 字节分片创建， 可以通过 字符串来创建。
+//下面操作是对 bytes.Buffer： 可变大小，带有读写方法的 字节buf。字节buf对象 可以默认创建，可以通过其他 字节分片创建， 可以通过 字符串来创建。
+//下面操作是对 bytes.Buffer： 可变大小，带有读写方法的 字节buf。字节buf对象 可以默认创建，可以通过其他 字节分片创建， 可以通过 字符串来创建。
+//下面操作是对 bytes.Buffer： 可变大小，带有读写方法的 字节buf。字节buf对象 可以默认创建，可以通过其他 字节分片创建， 可以通过 字符串来创建。
 type BytesBuffer struct {
 	bf *bytes.Buffer // is a variable-sized buffer of bytes with Read and Write methods
 	//可变大小，可读写 的字节buf, 。
@@ -92,15 +92,18 @@ func NewBytesBuffer(c ...createBytesBuffer) *BytesBuffer {
 	return b
 }
 
+// bytes.Buffer 通过 其他分片创建。
 func newBytesBuffer() createBytesBuffer {
 	d := make([]byte, 0, 1024)
 	return func(b *BytesBuffer) {
-		b.bf = bytes.NewBuffer(d) //d不能再使用，因为已经转移到 bytes.Buffer对象内了。
+		b.bf = bytes.NewBuffer(d) //原来的分片 d 不能再使用，因为已经转移到 bytes.Buffer对象内了。
 	}
 }
 
+// bytes.Buffer 通过 其他字符串创建。
 func newStrBuffer(data string) createBytesBuffer {
 	return func(b *BytesBuffer) {
 		b.bf = bytes.NewBufferString(data) // creates and initializes a new Buffer using string s as its initial contents.
+		//然后从这个 string上的数据进行读写。
 	}
 }

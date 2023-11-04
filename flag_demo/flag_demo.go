@@ -59,6 +59,7 @@ func NewFlagDemo() *FlagDemo {
 	r := &FlagDemo{}
 	
 	flag.Parse() //调用函数用于解析flag.
+	flag.Usage() //用于当命令行参数输入有问题时，可以在该判断条件下 运行该语句。
 	return r
 }
 

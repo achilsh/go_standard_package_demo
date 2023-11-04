@@ -25,4 +25,6 @@ func main() {
 	flag_demo.RunFlagDemo()
 	//
 	strings_demo.StringsDemoRun()
+	strings_demo.RunStringBuilderDemo()
+	strings_demo.RunStringsReader()
 }
