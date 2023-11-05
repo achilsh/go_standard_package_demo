@@ -6,6 +6,8 @@ import (
 	"std_pkg_demo/bytes_demo"
 	"std_pkg_demo/encode_demo"
 	"std_pkg_demo/flag_demo"
+	sliceofanydemo "std_pkg_demo/slice_of_any_demo"
+	sortdemo "std_pkg_demo/sort_demo"
 	strconvdemo "std_pkg_demo/strconv_demo"
 	"std_pkg_demo/strings_demo"
 )
@@ -30,4 +32,8 @@ func main() {
 	strings_demo.RunStringsReader()
 	//
 	strconvdemo.RunStrconvDemo()
+	//
+	sliceofanydemo.RunSliceOfAny()
+	//
+	sortdemo.RunSortDemo()
 }

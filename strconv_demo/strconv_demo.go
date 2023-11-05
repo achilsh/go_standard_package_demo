@@ -5,6 +5,18 @@ import (
 	"strconv"
 )
 
+//定义了 基本类型 和 他们字符串 之间的转化。
+//定义了 基本类型 和 他们字符串 之间的转化。
+//定义了 基本类型 和 他们字符串 之间的转化。
+//定义了 基本类型 和 他们字符串 之间的转化。
+//定义了 基本类型 和 他们字符串 之间的转化。
+//定义了 基本类型 和 他们字符串 之间的转化。
+//定义了 基本类型 和 他们字符串 之间的转化。
+//定义了 基本类型 和 他们字符串 之间的转化。
+//定义了 基本类型 和 他们字符串 之间的转化。
+
+
+
 type StrconvDemo struct {
 
 }
@@ -22,7 +34,7 @@ func RunStrconvDemo() {
 
 func (p *StrconvDemo) StringToBaseData() {
 	fmt.Println("run string to base data() ")
-	
+
 	x, e:= strconv.Atoi("12321")
 	fmt.Println("Atoi(): ", x, e)
 	//
