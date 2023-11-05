@@ -6,6 +6,7 @@ import (
 	"std_pkg_demo/bytes_demo"
 	"std_pkg_demo/encode_demo"
 	"std_pkg_demo/flag_demo"
+	strconvdemo "std_pkg_demo/strconv_demo"
 	"std_pkg_demo/strings_demo"
 )
 
@@ -27,4 +28,6 @@ func main() {
 	strings_demo.StringsDemoRun()
 	strings_demo.RunStringBuilderDemo()
 	strings_demo.RunStringsReader()
+	//
+	strconvdemo.RunStrconvDemo()
 }
