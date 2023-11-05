@@ -10,6 +10,7 @@ import (
 	sortdemo "std_pkg_demo/sort_demo"
 	strconvdemo "std_pkg_demo/strconv_demo"
 	"std_pkg_demo/strings_demo"
+	timedemo "std_pkg_demo/time_demo"
 )
 
 func main() {
@@ -36,4 +37,6 @@ func main() {
 	sliceofanydemo.RunSliceOfAny()
 	//
 	sortdemo.RunSortDemo()
+	//
+	timedemo.RunTimeDemo()
 }
