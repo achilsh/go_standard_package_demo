@@ -15,7 +15,7 @@ type GeneralData interface {
 	//proc2()
 	//....
 }
-type SingletonDemo struct{   //不管多少次获取内部数据，只获得一份值。 //singleton
+type SingletonDemo struct{   //不管多少次获取内部数据，只获得一份值。 //singleton factory	
 	once sync.Once  // An Once must not be copied after first use.
 	//data 
 	data string 
@@ -37,13 +37,13 @@ type IGetGeneralData interface { //那么定义 var xy IGetGeneralData = NewOnce
 
 
 func SyncOnceRun() {
-	var xy IGetGeneralData = NewOnceDemo()
-	xy.GetInstance()
-	xy.GetInstance()
-
-	xy = NewOnceDemo2()
-	xy.GetInstance()
-	xy.GetInstance()
+	singletonMaps  := make(map[string]IGetGeneralData)
+	singletonMaps["a"]=  NewOnceDemo()
+	singletonMaps["b"] = NewOnceDemo2()
+	for _, v := range singletonMaps {
+		v.GetInstance()
+		v.GetInstance()
+	}
 }
 
 func NewOnceDemo() IGetGeneralData { //*SingletonDemo
