@@ -10,6 +10,7 @@ import (
 	sortdemo "std_pkg_demo/sort_demo"
 	strconvdemo "std_pkg_demo/strconv_demo"
 	"std_pkg_demo/strings_demo"
+	syncdemo "std_pkg_demo/sync_demo"
 	timedemo "std_pkg_demo/time_demo"
 )
 
@@ -39,4 +40,6 @@ func main() {
 	sortdemo.RunSortDemo()
 	//
 	timedemo.RunTimeDemo()
+
+	syncdemo.SyncOnceRun()
 }
