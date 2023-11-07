@@ -15,6 +15,102 @@ type GeneralData interface {
 	//proc2()
 	//....
 }
+type SingletonGeneicDemo[T any] struct {
+	once sync.Once 
+	data T 
+	createGenericObj func()T
+}
+
+func (o* SingletonGeneicDemo[T]) GetInstance()T {
+	o.once.Do(func() {
+		o.data = o.createGenericObj()
+	})
+	return o.data
+}
+
+func NewIntObj() *SingletonGeneicDemo[int] {
+	r := &SingletonGeneicDemo[int] {
+		createGenericObj: func()int {
+			fmt.Println("int obj")
+			return 1111
+		},
+	}
+	return r
+}
+
+func NewFloat32Obj() *SingletonGeneicDemo[float32]{
+	r := &SingletonGeneicDemo[float32] {
+		createGenericObj: func()float32 {
+			fmt.Println("run float32")
+			return 123.123
+		},
+	}
+	return r
+}
+
+type MessageData struct {
+	A int 
+	B string
+}
+func NewMessageOjb() *SingletonGeneicDemo[*MessageData] {
+	r := &SingletonGeneicDemo[*MessageData]{
+		createGenericObj:   func() *MessageData {
+			return &MessageData{
+				A: 100,
+				B: "this is demo",
+			}
+		},
+	}
+	return r
+}
+
+type GenericInteface[T any] interface {
+	GetInstance()T
+}
+
+type mpOjbType[VType any] map[string]VType 
+type mp1ObjType[ Vv any, GG GenericInteface[Vv]] map[string]GG
+func RunGenericSingleton() {
+	var mp1Obj mp1ObjType[int, GenericInteface[int]] = make(map[string]GenericInteface[int])
+	mp1Obj["int"] =  NewIntObj()
+	//
+	var mpDemo mpOjbType[int] = make(map[string]int)
+	mpDemo["int"] = 1232
+
+	var mpFloate2Demo mpOjbType[float32] = make(map[string]float32)
+	mpFloate2Demo["float32"] = 123.123
+
+	var x1 GenericInteface[int] =  NewIntObj()
+	var x2  GenericInteface[float32] = NewFloat32Obj()
+	var x3  GenericInteface[*MessageData] = NewMessageOjb()
+
+	x1.GetInstance()
+	x2.GetInstance()
+	x3.GetInstance()
+
+	// 通过模板来定义 到单利的结构，单利数据的
+	x := NewIntObj()
+	data := x.GetInstance()
+	fmt.Println(data)
+
+	(&SingletonGeneicDemo[float32] {
+			createGenericObj: func()float32 {
+				fmt.Println("run float32")
+				return 123.123
+			},
+		}).GetInstance()
+
+
+	y := NewFloat32Obj()
+	d2 := y.GetInstance()
+	fmt.Println(d2)
+
+	z := NewMessageOjb()
+	d3 := z.GetInstance()
+	fmt.Println(d3)
+}
+
+
 type SingletonDemo struct{   //不管多少次获取内部数据，只获得一份值。 //singleton factory	
 	once sync.Once  // An Once must not be copied after first use.
 	//data 

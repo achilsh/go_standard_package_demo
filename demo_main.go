@@ -42,4 +42,5 @@ func main() {
 	timedemo.RunTimeDemo()
 
 	syncdemo.SyncOnceRun()
+	syncdemo.RunGenericSingleton()
 }
