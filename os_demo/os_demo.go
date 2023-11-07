@@ -45,9 +45,9 @@ func RunOsDeo() {
 
 	fmt.Println("os.UnSetenv(): ", os.Unsetenv("test_demo"))
 	fmt.Println("os.Getenv(): ", os.Getenv("test_demo"))
-	v, ok = os.LookupEnv("test_demo")
+	v, ok = os.LookupEnv("test_demo")  //查找环境变量
 	if ok {
-		fmt.Println("find env: test_demo, value: ", v)
+		fmt.Println("find env: test_demo, value: ", v) // 环境变量存在，即使变量值为空也返回true.
 	} else {
 		fmt.Println("not find env: test_demo value")
 	}
@@ -64,15 +64,44 @@ func RunOsDeo() {
 	fmt.Println("----create hard link") //给文件创建一个硬链接。 
 	os.Link("x1.log", "xxxx1.log")
 
-	fmt.Println("----symbolic link")
+	fmt.Println("----symbolic link")  //创建文件的软连接。
 	os.Symlink("x1.log", "xxxx2.log")
 
 	fmt.Println(".......create dir with perm .......")
-	os.Mkdir("xxx3_dir", 0750) 
+	os.Mkdir("xxx3_dir", 0750)       //创建目录
 	
 	fmt.Println("...... create any parent dir.........")
-	os.MkdirAll("./xxx4/yyyy1", 0750)
+	os.MkdirAll("./xxx4/yyyy1", 0750) //创建多级目录
 
 
+	fmt.Println("----- file write, read, rename, remove, ")
+	os.WriteFile("./x2.log", []byte("thi is write file demo"),  0666) //文件不存在，则以0666权限去创建该文件。
+	readRet, e := os.ReadFile("x2.log")     //返回错误 e 标识读失败。 io.EOF 不会作为错误，就是说 返回的错误中没有 io.EOF 
+	if e != nil {
+		fmt.Println("read data fail, e: ", e)
+	} else {
+		fmt.Println("read file, file data: ", string(readRet)) 
+	}
+	e = os.Remove("x1.log")
+	if e != nil {
+		fmt.Println("remove x1.log fail, e: ", e)
+	}
+	e = os.Remove("x2.log") //删除文件或者目录
+	if e != nil {
+		fmt.Println("remove x2.log fail, e: ", e)
+	}
+	e = os.Remove("xxx3_dir")
+	if e != nil {
+		fmt.Println("remove xxx3_dir fail, e: ", e)
+	}
+	e = os.Remove("xxxx2.log")
+	if e != nil {
+		fmt.Println("remove xxxx2.log fail, e: ", e)
+	}
+	e = os.Remove("xxx4")
+	if e != nil {
+		fmt.Println("remove xxx4 fail, e: ", e)
+	}
+	os.Remove("xxxx1.log")
 	
 }
