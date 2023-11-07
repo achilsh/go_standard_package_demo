@@ -25,6 +25,7 @@ func RunDemo() {
 
 func(o *RunTimeDemo) getNumCpu() {
 	fmt.Println("cpu nums: ", runtime.NumCPU()) //获取当前进程能使用的cpu数目。
+	fmt.Println("1) os sytem type: ", runtime.GOOS)
 }
 func (o* RunTimeDemo) GOMAXPROCS() {
 	fmt.Println("set max cpu nums for using: ", runtime.GOMAXPROCS(0)) //设置能并行运行的最大 cpu 数。

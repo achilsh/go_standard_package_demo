@@ -6,6 +6,7 @@ import (
 	"std_pkg_demo/bytes_demo"
 	"std_pkg_demo/encode_demo"
 	"std_pkg_demo/flag_demo"
+	osdemo "std_pkg_demo/os_demo"
 	runtimedemo "std_pkg_demo/runtime_demo"
 	sliceofanydemo "std_pkg_demo/slice_of_any_demo"
 	sortdemo "std_pkg_demo/sort_demo"
@@ -48,6 +49,9 @@ func main() {
 	syncdemo.RunBytesBuffPool()
 	//
 	syncdemo.RunSyncMapDemo()
+	syncdemo.RunAtomicDemo()
 	//
 	runtimedemo.RunDemo()
+	//
+	osdemo.RunOsDeo()
 }
