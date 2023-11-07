@@ -43,4 +43,8 @@ func main() {
 
 	syncdemo.SyncOnceRun()
 	syncdemo.RunGenericSingleton()
+	syncdemo.RunSyncPoolDemo()
+	syncdemo.RunBytesBuffPool()
+	//
+	syncdemo.RunSyncMapDemo()
 }
