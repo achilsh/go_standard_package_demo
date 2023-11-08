@@ -118,7 +118,7 @@ func (t *TimeDemo) ticker() {
 	defer tk.Stop()                       //停掉 该定时器。
 
 	chSig := make(chan os.Signal)
-	signal.Notify(chSig, syscall.SIGINT, syscall.SIGTERM)
+	signal.Notify(chSig, syscall.SIGINT, syscall.SIGTERM) // 将接收到的信号(在参数2指定)转给 chan。 如未指定接收信号，那么会吧所有接收到的信号转给chan.
 
 	i := 0
 	for {
