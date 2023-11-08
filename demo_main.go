@@ -7,6 +7,7 @@ import (
 	"std_pkg_demo/encode_demo"
 	"std_pkg_demo/flag_demo"
 	osdemo "std_pkg_demo/os_demo"
+	pathdemo "std_pkg_demo/path_demo"
 	runtimedemo "std_pkg_demo/runtime_demo"
 	sliceofanydemo "std_pkg_demo/slice_of_any_demo"
 	sortdemo "std_pkg_demo/sort_demo"
@@ -54,4 +55,6 @@ func main() {
 	runtimedemo.RunDemo()
 	//
 	osdemo.RunOsDeo()
+	pathdemo.RunPathDemo()
+	pathdemo.RunFilePathDemo()
 }
