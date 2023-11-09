@@ -6,6 +6,7 @@ import (
 	"std_pkg_demo/bytes_demo"
 	"std_pkg_demo/encode_demo"
 	"std_pkg_demo/flag_demo"
+	iodemo "std_pkg_demo/io_demo"
 	osdemo "std_pkg_demo/os_demo"
 	pathdemo "std_pkg_demo/path_demo"
 	runtimedemo "std_pkg_demo/runtime_demo"
@@ -57,4 +58,7 @@ func main() {
 	osdemo.RunOsDeo()
 	pathdemo.RunPathDemo()
 	pathdemo.RunFilePathDemo()
+	//
+ 	iodemo.RunIoPackageDemo()
+	iodemo.IoTypeDemoRun()
 }
