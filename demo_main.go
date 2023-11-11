@@ -6,6 +6,7 @@ import (
 	"std_pkg_demo/bytes_demo"
 	"std_pkg_demo/encode_demo"
 	"std_pkg_demo/flag_demo"
+	genericdemo "std_pkg_demo/generic_demo"
 	iodemo "std_pkg_demo/io_demo"
 	osdemo "std_pkg_demo/os_demo"
 	pathdemo "std_pkg_demo/path_demo"
@@ -65,4 +66,6 @@ func main() {
 	//
 	templateDemo.TemplateDemoRun()
 	templateDemo.RunGenStructType()
+	//
+	genericdemo.RunGenerics()
 }
