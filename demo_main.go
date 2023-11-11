@@ -15,6 +15,7 @@ import (
 	strconvdemo "std_pkg_demo/strconv_demo"
 	"std_pkg_demo/strings_demo"
 	syncdemo "std_pkg_demo/sync_demo"
+	templateDemo "std_pkg_demo/template"
 	timedemo "std_pkg_demo/time_demo"
 )
 
@@ -59,6 +60,9 @@ func main() {
 	pathdemo.RunPathDemo()
 	pathdemo.RunFilePathDemo()
 	//
- 	iodemo.RunIoPackageDemo()
+	iodemo.RunIoPackageDemo()
 	iodemo.IoTypeDemoRun()
+	//
+	templateDemo.TemplateDemoRun()
+	templateDemo.RunGenStructType()
 }
