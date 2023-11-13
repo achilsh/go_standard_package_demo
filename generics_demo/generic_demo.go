@@ -40,3 +40,32 @@ func RunGenerics() {
 	v2 := CallMaps[int, int](vvv)
 	fmt.Println(v2)
 }
+
+// 非泛型 类型中，其方法 不支持 泛型
+// type AA struct {}
+// func(a* AA)[T any|int](v int) {
+// }
+
+// 要实现自定义类型方法支持泛型，那么自定义的类型必须是泛型，比如：
+type GenericType[T any | int] struct{}
+
+func (c *GenericType[T]) call(v T) {
+	//
+}
+
+// 不能定义匿名函数的泛型函数，比如：
+// func  demoTest {
+//  f := func[T any](v T) {} //定义匿名的泛型函数。
+//  f(100)
+// }
+// 但是可以在匿名函数中调用 泛型函数，比如:
+// func() {
+//    callGenericFunc[int, float32](1, 123.12) //可以直接调用匿名的泛型函数。
+// }()
+
+// 泛型类型的嵌套， 泛型的类型有多种； 另外一种依赖另外一种。比如：T, []T, map[comparable]T, 
+// type DemoCallNested[T any, S []T] struct {
+	// Data T 
+	// Arr S
+// }
+//实例化实例： var x DemoCallNested[int, []int] 
