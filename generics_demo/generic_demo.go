@@ -4,10 +4,11 @@ import "fmt"
 
 //本章节主要 介绍 go的模板使用。
 
+//类型参数的限制：用interface 表示。
 type ValueConstraint interface { 
 	// 申明模板类型限制的类型。这样在写模板时模板的形参类型可以用该声明的类型来限制。
 	// 这里单独申明的作用，主要是为了多次多地方复用 类型形参限制。
-	string|int|float32
+	~string|~int|~float32  // 接口定义时，可以包含一些类型。~标识只要底层是这些类型都可以，不管是 type OtherType int 后的 OtherType 还是 int 都是在类型限制范围之内。
 }
 
 type ValueConstraintOne interface {
