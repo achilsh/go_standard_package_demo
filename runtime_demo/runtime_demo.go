@@ -3,6 +3,7 @@ package runtimedemo
 import (
 	"fmt"
 	"runtime"
+	"strings"
 )
 
 // 本章节主要说明 go runtime 相关的知识：
@@ -18,9 +19,14 @@ func RunDemo() {
 	fmt.Println("call runtime funcs:")
 	r := NewRunTimeDemo()
 	//
+	defer r.GetPanicStackInfo()
+	////
 	r.getNumCpu()
 	r.GOMAXPROCS()
 	r.print_stack()
+
+	var x *int = nil 
+	*x = 12312
 }
 
 func(o *RunTimeDemo) getNumCpu() {
@@ -54,3 +60,25 @@ func (o *RunTimeDemo) print_stack() {
 	close(ch)
 
 }
+
+func (o *RunTimeDemo) GetPanicStackInfo() string  {
+	if e := recover(); e != nil {
+		fmt.Println("....... run .......")
+		buf := new(strings.Builder)
+		pc := make([]uintptr, 10)
+		n := runtime.Callers(3, pc)
+		frames := runtime.CallersFrames(pc[:n])
+
+		var frame runtime.Frame
+		more := n > 0
+		for more {
+			frame, more = frames.Next()
+			buf.Write([]byte(fmt.Sprintf("  => %s:%d %s\n", frame.File, frame.Line, frame.Function)))
+		}
+		buf.Write([]byte(fmt.Sprintf(" e: %v\n", e )))
+		// fmt.Printf("e: %v, stack: %v\n", e, buf.String())
+		return buf.String()
+	}
+	return ""
+}
+	
